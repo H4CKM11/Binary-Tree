@@ -15,10 +15,15 @@ public:
     ~BinaryTree();
 
     void addNode(T data);
+    void preOrder();
+    void inOrder();
+    void postOrder();
 
 protected:
     void recursiveAddNote(node<T>* &current, T data);
-
+    void recursivePreOrder(node<T>* &current, void(*function)(T data));
+    void recursiveInOrder(node<T>* &current, void (*function)(T data));
+    void recursivePostOrder(node<T>* &current, void (*function)(T data));
 };
 
 
@@ -65,5 +70,25 @@ void BinaryTree<T>::recursiveAddNote(node<T>* &current, T data)
     }
 
 }
+
+template<typename T>
+void BinaryTree<T>::preOrder()
+{
+    recursivePreOrder(root, [](T data) {std::cout << data << std::endl; });
+}
+
+template<typename T>
+void BinaryTree<T>::recursivePreOrder(node<T>* &current, void(*funtion)(T data))
+{
+    if(current == nullptr)
+    {
+        return;
+    }
+    funtion(current->data);
+    recursivePreOrder(current->left, [](T data) {std::cout << data << std::endl; });
+    recursivePreOrder(current->right, [](T data) {std::cout << data << std::endl; });
+
+}
+
 
 #endif

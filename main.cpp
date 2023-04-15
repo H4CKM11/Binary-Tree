@@ -9,6 +9,7 @@ int main()
     tree.addNode(7);
     tree.addNode(20);
 
+    tree.preOrder();
 
     return 0;
 }
