@@ -91,4 +91,43 @@ void BinaryTree<T>::recursivePreOrder(node<T>* &current, void(*funtion)(T data))
 }
 
 
+template<typename T>
+void BinaryTree<T>::inOrder()
+{
+    recursiveInOrder(root, [](T data){std::cout << data << std::endl;});
+}
+
+template<typename T> 
+void BinaryTree<T>::recursiveInOrder(node<T>* &current, void (*function)(T data))
+{
+    if(current == nullptr)
+    {
+        return;
+    }
+    recursiveInOrder(current->left, [](T data) {std::cout << data << std::endl;});
+    function(current->data);
+    recursiveInOrder(current->right, [](T data) {std::cout << data << std::endl;});
+}
+
+template<typename T>
+void BinaryTree<T>::postOrder()
+{
+    recursivePostOrder(root, [](T data){std::cout << data << std::endl;});
+}
+
+template<typename T>
+void BinaryTree<T>::recursivePostOrder(node<T>* &current, void(*function)(T data))
+{
+    if(current == nullptr)
+    {
+        return;
+    }
+
+    recursivePostOrder(current->left, [](T data){std::cout << data << std::endl;});
+    recursivePostOrder(current->right, [](T data){std::cout << data << std::endl;});
+    function(current->data);
+}
+
+
+
 #endif

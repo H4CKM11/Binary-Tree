@@ -10,6 +10,8 @@ int main()
     tree.addNode(20);
 
     tree.preOrder();
+    tree.inOrder();
+    tree.postOrder();
 
     return 0;
 }
