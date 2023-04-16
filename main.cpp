@@ -13,5 +13,10 @@ int main()
     tree.inOrder();
     tree.postOrder();
 
+    tree.addNode(50);
+    tree.addNode(12);
+
+    tree.preOrder();
+
     return 0;
 }
